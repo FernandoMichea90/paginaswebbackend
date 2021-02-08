@@ -3,7 +3,6 @@
  const nodemailer=require("nodemailer") 
  const fetch=require("node-fetch")
 const request=require("request")
-
  module.exports=function(){
 
 
@@ -11,8 +10,10 @@ const request=require("request")
 
     router.post('/mandarcorreo',(req,res)=>{
         
-        const state={correo:"fmicheam@gmail.com",asunto:"Primera Prueba",mensaje:"este es un mensaje"}
-
+        const state=req.body
+        console.log("este es el state ???");
+        
+        console.log(state)
 
 
          // primera parte 
@@ -30,10 +31,10 @@ const request=require("request")
 
         let mailOptions={
 
-            from:`${state.correo}`,
+      
             to:"contacto@ecomusichotel.com",
-            subject:`Contacto Clinica Almendral:${state.asunto}`,
-            text:`${state.asunto}`
+            subject:`Contacto Clinica Almendral:${state.nombre}`,
+            text:`Mi Correo :${state.correo} \n Hola mi nombre es ${state.nombre}  \n mi asunto es  ${state.asunto}`
 
         }
 
